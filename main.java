@@ -3,6 +3,7 @@ package lightSwitches;
 import javax.swing.JOptionPane;
 import lightSwitches.Msg;
 
+//runs the program with user interface(joptionpane)
 public class main {
 	private static boolean[][] lights;
 	private static String s = JOptionPane.showInputDialog("How long will your rows be (from 1 to 20)?");
@@ -15,7 +16,8 @@ public class main {
 			searchType();
 		}
 	}
-
+	
+	// takes user input and determines what method to execute based on the input
 	public static void searchType() {
 		String[] options = {"manipulate single light", "out of order", "manipulate row or col", "manipulate all", "New lightboard", "exit"};
 		boolean loop = true;
@@ -73,6 +75,8 @@ public class main {
 		}
 		
 	}
+	
+	// uses array of lights to display on lights as "ON" and off lights as "OFF"
 	private static String drawMap() {
 		String map = "";
 		for(int r = 0; r < lights.length; r++) {
@@ -90,7 +94,8 @@ public class main {
 		}
 		return map;
 	}
-
+	
+	// sets value of lights. a light has a 40 percent chance to be true(on)
 	public static void randomizer() {
 		 lights = new boolean[row][col];
 		 for (int r = 0; r < row; r++){
@@ -101,6 +106,7 @@ public class main {
 		 }
 	}
 	
+	// turns a single light of the users choice on
 	public static void singleLight(int r, int c, boolean v) {
 		if(v) {
 			lights[r][c] = true;
@@ -110,6 +116,7 @@ public class main {
 		}
 	}
 	
+	// turns all lights off
 	public static void turnAllOff() {
 		for(int i = 0; i < lights.length; i++){
 			  for(int j = 0; j < lights[0].length; j++){
@@ -118,6 +125,7 @@ public class main {
 		}
 	}
 	
+	// turns all lights on
 	public static void turnAllOn() {
 		for(int i = 0; i < lights.length; i++){
 			  for(int j = 0; j < lights[0].length; j++){
@@ -126,6 +134,7 @@ public class main {
 		}
 	}
 	
+	// manipulates(on or off) all lights in a row
 	public static void allRow(int r, boolean c) {
 		if(c) {
 			for(int i = 0; i < lights.length; i++) {
@@ -139,6 +148,7 @@ public class main {
 		}
 	}
 
+	// manipulates(on or off) all lights in a column
 	public static void allCol(int c, boolean e) {
 		if(e) {
 			for(int i = 0; i < lights[0].length; i++) {
@@ -152,6 +162,7 @@ public class main {
 		}
 	}
 	
+	// manipulates(on or off) all lights in an area chosen by user
 	public void grid(int r1, int r2, int c1, int c2, boolean h) {
 		if(h) {
 			for(int i = r1; i < lights[r2].length; i++) {
